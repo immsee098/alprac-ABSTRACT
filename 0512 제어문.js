@@ -1,7 +1,7 @@
 //1번 문제
 //1. 변수 x가 10보다 크고 20보다 작을 때 변수 x를 출력하는 조건식을 완성하라
 let x = 15;
-if (x > 10, x < 20) {
+if (x > 10 && x < 20) {
   console.log(x)
 }
 
@@ -111,7 +111,8 @@ for (let i = 0; i < 5; i++)
 
 for (let i = 5; i > 0; i--)
 {
-  const a = Array(i+1).join('*')
+  // const a = Array(i+1).join('*')
+  const a = "*".repeat(i)
   const b = " ".repeat(5-i)
   console.log(b + a);
 
@@ -122,7 +123,6 @@ for (let i = 5; i > 0; i--)
 //13. 삼각형 출력하기 - pattern 3
 //다음을 참고하여 *(별)로 트리를 문자열로 완성하라. 개행문자(‘\n’)를 사용하여 개행한다. 완성된 문자열의 마지막은 개행문자(‘\n’)로 끝나도 관계없다.
 
-*****
 for (let i = 5; i > 0; i--)
 {
   const a = Array(i + 1).join('*')
