@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Document</title>
+
+    <style>
+        .checked{
+            text-decoration: line-through;
+        }
+    
+
+    </style>
+</head>
+<body>
+    <input type="text" class="input-todo" placeholder="Enter todo!">
+    <button class="add">ADD</button>
+    <ul class="todos"></ul>
+
+    <script>
+        const $inputTodo = document.querySelector('.input-todo');
+        const $add = document.querySelector('.add');
+        const $todos = document.querySelector('.todos');
+
+        function addTodo(newTodo){
+            $todos.innerHTML += `<input type="checkbox" class="check"><li class="todo">${newTodo} <button class="remove">X</button></li>`;
+
+        }
+
+        function removeTodo(childNode){
+            $todos.removeChild(childNode);
+
+        }
+    
+        $add.onclick = function(){
+            addTodo($inputTodo.value);
+            $inputTodo.value='';
+        }
+
+        $todos.addEventListener('click', function(e){
+            const target = e.target.parentNode;
+
+            if (target.classList.contains('todo')) removeTodo(target)
+
+        });
+
+
+        $todos.addEventListener('change', function(e){
+            const line = e.target.nextSibling;
+
+            if(!(e.target.classList.contains('checked'))){
+                e.target.classList.add('checked')
+                line.classList.add('checked')
+            }
+
+            else{
+                e.target.classList.remove('checked')
+                line.classList.remove('checked')
+            }
+
+        });
+
+
+
+
+    </script>
+</body>
+</html>
