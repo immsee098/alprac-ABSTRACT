@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <title>HW3</title>
+
+</head>
+
+<head>
+
+  <title>async.await</title>
+
+</head>
+
+<body>
+
+  <pre class="result"></pre>
+
+  <script>
+
+    const $result = document.querySelector('.result');
+
+    const render = todos => { $result.innerHTML = JSON.stringify(todos, null, 2); };
+
+
+
+    (async function () {
+      const res = await fetch('http://localhost:3000/todos');
+      const todos = await res.json();
+      render(todos);
+
+    }());
+
+
+
+
+
+
+
+
+  </script>
+
+</body>
+
+</html>

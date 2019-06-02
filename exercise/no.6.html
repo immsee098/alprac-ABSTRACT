@@ -44,59 +44,55 @@
   <script>
       const $display = document.querySelector('.display');
       const $control = document.querySelector('.control');
-      var sum = 0;
+      var time = 0;
+      var running = 0;
+      let startStop = false;
 
-
-
-      $control.addEventListener('click', e=> {
-          if(!$control.classList.contains('.run')){
-            $control.classList.add('.run');
-            var kk = setInterval(function() {
-          TimerCount()
-        }, 1);
-          
-          }
-
-
-          else{
-            $control.classList.remove('.run')
-            clearInterval(kk);
-          }
-          
-      })
-
-      //함수부분
-
-        var sec = 0;
-        var min = 0;
-
-        function TimerCount(){
-        var mmsec = sum;
-        sum += 1
-
-        if(sum == 100){
-            sec += 1
-            if (sec == 60){
-            min += 1
-        }
-
-            else if (sec>60){
-            sec = sec -60;
-        }
-        }
-
-        else if (sum>100){
-            sum = sum-100
-        }
-
-
-
-
-          return(mmsec+":"+sec+":"+min)
+      function startPause(){
+        if(running == 0){
+        running = 1;
+        increment();
+        $control.innerHTML = "Stop";
+        } else {
+        running = 0;
+        $control.innerHTML = "Resume";
+        }  
       }
 
-    
+      function increment(){
+        if(running == 1){
+        setTimeout(function(){
+        time++;
+        var mins = Math.floor(time/10/60);
+        var secs = Math.floor(time/10);
+        var tenths = time % 10;
+        
+        if(mins < 10){
+        mins = "0" + mins;
+        }
+        if(secs < 10){
+        secs = "0" + secs;
+        }
+        
+        $display.innerHTML = mins + ":" + secs + ":" + "0" + tenths;
+        increment();
+        
+        }, 100);
+        }
+      }
+      function off() {
 
+        startStop = false;
+
+        clearInterval(timer);
+
+      }
+
+      $control.addEventListener("click", e => {
+
+      });
+
+      startPause()
 
 
   </script>

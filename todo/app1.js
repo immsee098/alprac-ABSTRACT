@@ -16,6 +16,18 @@ function getTodos(){
         {id: 2, content: 'CSS', completed:false},
         {id: 3, content: 'Javascript', completed:false}
     ];
+
+    //ajax 예시
+    fetch('#')
+    .then(res=>res.json()) //약속이 성취됐을 떄 실행되는 then 함수
+    .then(todosFromServer=>{
+        todos=todosFromServer;
+
+        console.log('[GET]\n', todos)
+    })
+
+
+
     render();
 }
 
