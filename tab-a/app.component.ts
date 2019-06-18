@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { type } from 'os';
 
 // interface tabs {
 //   title: string,
@@ -107,10 +108,16 @@ export class AppComponent {
     if (!target.classList.contains('tab') || target.classList.contains('active')) return;
 
     this.tabs.forEach((tab, i) => {
-      this.tabs[i].active = !(this.tabs[i].active)
-      // if(!tab.active) {
-      //   tab.active = true
-      // }
+      var a= target.childNodes[1].textContent.trim()
+      var b = tab.title
+
+
+      if(b === a) {
+        this.tabs[i].active = true;
+      } else {
+        tab.active = false;
+      }
+
 
     })
 
